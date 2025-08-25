@@ -1,11 +1,11 @@
 /**
  * @author jawc
  */
-package dao;
+package src.dao;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
-import domain.Cliente;
+import src.domain.Cliente;
 import javax.swing.JOptionPane;
 
 public class ClienteMapDAO implements IClienteDAO {

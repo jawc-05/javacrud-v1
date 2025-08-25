@@ -1,11 +1,11 @@
 /**
  * @author jawc
  */
-package dao;
+package src.dao;
 
 import java.util.HashSet;
 import java.util.Set;
-import domain.Cliente;
+import src.domain.Cliente;
 
 public abstract class ClienteSetDAO implements IClienteDAO{
     private Set<Cliente> set;
