@@ -249,9 +249,17 @@ public class MainScreen extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(null, "Existem campos a serem preenchidos!", "ATENÇÃO", JOptionPane.ERROR_MESSAGE);
              return;
         } 
-        JOptionPane.showMessageDialog(null, nome + ", cadastrado com sucesso!", "ATENÇÃO", JOptionPane.INFORMATION_MESSAGE);
-       
         
+        Cliente cliente = new Cliente(nome,cpf,cpf,null,cpf,null,null,null);
+        Boolean isCadastrado = this.clienteDAO.cadastrar(cliente);
+        
+        if (isCadastrado){
+           modelo.addRow(new Object[]{cliente.getNome(), cliente.getCpf(), cliente.getTel(), cliente.getEnd()});
+           limparCampos();
+        } else {
+            JOptionPane.showMessageDialog(null, "Cliente já se encontra cadastrado", "ATENÇÃO", JOptionPane.INFORMATION_MESSAGE);
+        }
+  
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void txtNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumActionPerformed
@@ -314,5 +322,9 @@ public class MainScreen extends javax.swing.JFrame {
         modelo.addColumn("Email");
         
         tableClientes.setModel(modelo);
+    }
+
+    private void limparCampos() {
+        
     }
 }
