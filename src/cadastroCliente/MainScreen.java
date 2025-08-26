@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Administrador
+ * @author jawc-05
  */
 public class MainScreen extends javax.swing.JFrame {
 
