@@ -32,7 +32,7 @@ public class MainScreen extends javax.swing.JFrame {
         txtNome = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
         lblCPF = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtCPF = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuItemSair = new javax.swing.JMenuItem();
@@ -85,8 +85,8 @@ public class MainScreen extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(lblCPF)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(364, Short.MAX_VALUE))
+                        .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,7 +96,7 @@ public class MainScreen extends javax.swing.JFrame {
                     .addComponent(lblNome)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCPF)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(102, 102, 102)
                 .addComponent(btnSalvar)
                 .addContainerGap(981, Short.MAX_VALUE))
@@ -120,10 +120,15 @@ public class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNomeActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // TODO add your handling code here:
         String nome = txtNome.getText();
+        String cpf = txtCPF.getText();
         
-        JOptionPane.showMessageDialog(null, nome + ", cadastrado com sucesso!", "ATENÇÃO", JOptionPane.INFORMATION_MESSAGE);
+        if (!isCamposValidos(nome, cpf)){
+             JOptionPane.showMessageDialog(null, "Existem campos a serem preenchidos!", "ATENÇÃO", JOptionPane.ERROR_MESSAGE);
+             return;
+        } JOptionPane.showMessageDialog(null, nome + ", cadastrado com sucesso!", "ATENÇÃO", JOptionPane.INFORMATION_MESSAGE);
+        
+        
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
@@ -153,22 +158,28 @@ public class MainScreen extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainScreen().setVisible(true);
-            }
-        });
+    
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvar;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblCPF;
     private javax.swing.JLabel lblNome;
     private javax.swing.JMenuItem menuItemSair;
+    private javax.swing.JTextField txtCPF;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
+
+    private boolean isCamposValidos(String ...campos) {
+        for (String campo : campos){
+            if(campo == null || "".equals(campo)){
+                return false;
+            }
+        }
+        
+        return true;
+        
+    }
 }
