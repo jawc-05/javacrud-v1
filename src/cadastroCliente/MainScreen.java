@@ -48,6 +48,10 @@ public class MainScreen extends javax.swing.JFrame {
         txtEnd = new javax.swing.JTextField();
         lblNum = new javax.swing.JLabel();
         txtNum = new javax.swing.JTextField();
+        lblCity = new javax.swing.JLabel();
+        txtCity = new javax.swing.JTextField();
+        lblState = new javax.swing.JLabel();
+        txtState = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuItemSair = new javax.swing.JMenuItem();
@@ -96,6 +100,22 @@ public class MainScreen extends javax.swing.JFrame {
             }
         });
 
+        lblCity.setText("Cidade:");
+
+        txtCity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCityActionPerformed(evt);
+            }
+        });
+
+        lblState.setText("Estado:");
+
+        txtState.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtStateActionPerformed(evt);
+            }
+        });
+
         jMenu1.setText("Opções");
 
         menuItemSair.setText("Sair");
@@ -118,31 +138,42 @@ public class MainScreen extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnSalvar)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lblNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblTel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(lblNum))
-                        .addGap(4, 4, 4)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNum, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtTel, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
-                                .addComponent(txtNome)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblEnd)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblCPF)
-                                .addGap(34, 34, 34)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(lblNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblTel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(lblNum))
+                                .addGap(4, 4, 4)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtNum, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+                                    .addComponent(txtTel)
+                                    .addComponent(txtNome)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblState)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtState, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtCPF)
-                            .addComponent(txtEnd, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(lblEnd)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblCPF)
+                                        .addGap(34, 34, 34)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtCPF)
+                                    .addComponent(txtEnd, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblCity, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -163,12 +194,18 @@ public class MainScreen extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNum)
-                    .addComponent(txtNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                    .addComponent(txtNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCity))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblState)
+                    .addComponent(txtState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
                 .addComponent(btnSalvar)
-                .addGap(81, 81, 81)
+                .addGap(56, 56, 56)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(460, Short.MAX_VALUE))
+                .addContainerGap(455, Short.MAX_VALUE))
         );
 
         pack();
@@ -194,8 +231,10 @@ public class MainScreen extends javax.swing.JFrame {
         String tel = txtTel.getText();
         String end = txtEnd.getText();
         String num = txtNum.getText();
+        String cidade = txtCity.getText();
+        String estado = txtState.getText();
         
-        if (!isCamposValidos(nome, cpf, tel, end, num)){
+        if (!isCamposValidos(nome, cpf, tel, end, num, cidade, estado)){
              JOptionPane.showMessageDialog(null, "Existem campos a serem preenchidos!", "ATENÇÃO", JOptionPane.ERROR_MESSAGE);
              return;
         } JOptionPane.showMessageDialog(null, nome + ", cadastrado com sucesso!", "ATENÇÃO", JOptionPane.INFORMATION_MESSAGE);
@@ -206,6 +245,14 @@ public class MainScreen extends javax.swing.JFrame {
     private void txtNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumActionPerformed
+
+    private void txtCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCityActionPerformed
+
+    private void txtStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtStateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,16 +290,20 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCPF;
+    private javax.swing.JLabel lblCity;
     private javax.swing.JLabel lblEnd;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblNum;
+    private javax.swing.JLabel lblState;
     private javax.swing.JLabel lblTel;
     private javax.swing.JMenuItem menuItemSair;
     private javax.swing.JTable tableClientes;
     private javax.swing.JTextField txtCPF;
+    private javax.swing.JTextField txtCity;
     private javax.swing.JTextField txtEnd;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNum;
+    private javax.swing.JTextField txtState;
     private javax.swing.JTextField txtTel;
     // End of variables declaration//GEN-END:variables
 
