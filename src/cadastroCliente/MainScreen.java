@@ -5,18 +5,22 @@
 package cadastroCliente;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Administrador
  */
 public class MainScreen extends javax.swing.JFrame {
+    
+    private DefaultTableModel modelo = new DefaultTableModel();
 
     /**
      * Creates new form MainScreen
      */
     public MainScreen() {
         initComponents();
+        initCustomComponentes();
     }
 
     /**
@@ -33,6 +37,8 @@ public class MainScreen extends javax.swing.JFrame {
         btnSalvar = new javax.swing.JButton();
         lblCPF = new javax.swing.JLabel();
         txtCPF = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableClientes = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuItemSair = new javax.swing.JMenuItem();
@@ -56,6 +62,19 @@ public class MainScreen extends javax.swing.JFrame {
 
         lblCPF.setText("CPF:");
 
+        tableClientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tableClientes);
+
         jMenu1.setText("Opções");
 
         menuItemSair.setText("Sair");
@@ -76,7 +95,7 @@ public class MainScreen extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnSalvar)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblNome)
@@ -85,7 +104,8 @@ public class MainScreen extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(lblCPF)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -99,7 +119,9 @@ public class MainScreen extends javax.swing.JFrame {
                     .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(102, 102, 102)
                 .addComponent(btnSalvar)
-                .addContainerGap(981, Short.MAX_VALUE))
+                .addGap(81, 81, 81)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(469, Short.MAX_VALUE))
         );
 
         pack();
@@ -165,9 +187,11 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JButton btnSalvar;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCPF;
     private javax.swing.JLabel lblNome;
     private javax.swing.JMenuItem menuItemSair;
+    private javax.swing.JTable tableClientes;
     private javax.swing.JTextField txtCPF;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
@@ -181,5 +205,14 @@ public class MainScreen extends javax.swing.JFrame {
         
         return true;
         
+    }
+
+    private void initCustomComponentes() {
+        modelo.addColumn("Nome");
+        modelo.addColumn("CPF");
+        modelo.addColumn("Telefone");
+        modelo.addColumn("Endereço");
+        
+        tableClientes.setModel(modelo);
     }
 }
