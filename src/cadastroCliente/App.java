@@ -1,12 +1,9 @@
 package cadastroCliente;
 
 /**
- * 
+ *
  * @author jawc-05
- * 
- * /
-
-
+ */
 public class App {
     
     public static void main(String[] arg){
