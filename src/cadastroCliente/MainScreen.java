@@ -42,8 +42,12 @@ public class MainScreen extends javax.swing.JFrame {
         txtCPF = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableClientes = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        lblTel = new javax.swing.JLabel();
         txtTel = new javax.swing.JTextField();
+        lblEnd = new javax.swing.JLabel();
+        txtEnd = new javax.swing.JTextField();
+        lblNum = new javax.swing.JLabel();
+        txtNum = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuItemSair = new javax.swing.JMenuItem();
@@ -80,7 +84,17 @@ public class MainScreen extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tableClientes);
 
-        jLabel1.setText("Telefone:");
+        lblTel.setText("Telefone:");
+
+        lblEnd.setText("Endereço:");
+
+        lblNum.setText("Número:");
+
+        txtNum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNumActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("Opções");
 
@@ -107,17 +121,28 @@ public class MainScreen extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lblNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblTel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lblNum))
                         .addGap(4, 4, 4)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtTel, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
-                            .addComponent(txtNome))
-                        .addGap(12, 12, 12)
-                        .addComponent(lblCPF)
+                            .addComponent(txtNum, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtTel, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+                                .addComponent(txtNome)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(lblEnd)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblCPF)
+                                .addGap(34, 34, 34)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtCPF)
+                            .addComponent(txtEnd, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE))))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -131,13 +156,19 @@ public class MainScreen extends javax.swing.JFrame {
                     .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(69, 69, 69)
+                    .addComponent(lblTel)
+                    .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblEnd)
+                    .addComponent(txtEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNum)
+                    .addComponent(txtNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
                 .addComponent(btnSalvar)
                 .addGap(81, 81, 81)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(465, Short.MAX_VALUE))
+                .addContainerGap(460, Short.MAX_VALUE))
         );
 
         pack();
@@ -161,14 +192,20 @@ public class MainScreen extends javax.swing.JFrame {
         String nome = txtNome.getText();
         String cpf = txtCPF.getText();
         String tel = txtTel.getText();
+        String end = txtEnd.getText();
+        String num = txtNum.getText();
         
-        if (!isCamposValidos(nome, cpf, tel)){
+        if (!isCamposValidos(nome, cpf, tel, end, num)){
              JOptionPane.showMessageDialog(null, "Existem campos a serem preenchidos!", "ATENÇÃO", JOptionPane.ERROR_MESSAGE);
              return;
         } JOptionPane.showMessageDialog(null, nome + ", cadastrado com sucesso!", "ATENÇÃO", JOptionPane.INFORMATION_MESSAGE);
         
         
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void txtNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,16 +239,20 @@ public class MainScreen extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCPF;
+    private javax.swing.JLabel lblEnd;
     private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblNum;
+    private javax.swing.JLabel lblTel;
     private javax.swing.JMenuItem menuItemSair;
     private javax.swing.JTable tableClientes;
     private javax.swing.JTextField txtCPF;
+    private javax.swing.JTextField txtEnd;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtNum;
     private javax.swing.JTextField txtTel;
     // End of variables declaration//GEN-END:variables
 
