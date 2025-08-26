@@ -16,7 +16,7 @@ public class Cliente {
     private String estado;
     private String email;
 
-    public Cliente(String nome, Long cpf, Long tel, String end, Integer num, String cidade, String estado, String email) {
+    public Cliente(String nome, String end, long parseLong, String cidade, Long cpf, Long tel, Integer num) {
         this.nome = nome;
         this.cpf = Long.valueOf(cpf);
         this.tel = Long.valueOf(tel);

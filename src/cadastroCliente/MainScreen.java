@@ -6,12 +6,13 @@ package cadastroCliente;
 
 import dao.ClienteMapDAO;
 import dao.IClienteDAO;
+import domain.Cliente;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Administrador
+ * @author jawc-05
  */
 public class MainScreen extends javax.swing.JFrame {
     
@@ -52,6 +53,8 @@ public class MainScreen extends javax.swing.JFrame {
         txtCity = new javax.swing.JTextField();
         lblState = new javax.swing.JLabel();
         txtState = new javax.swing.JTextField();
+        lblEmail = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuItemSair = new javax.swing.JMenuItem();
@@ -116,6 +119,8 @@ public class MainScreen extends javax.swing.JFrame {
             }
         });
 
+        lblEmail.setText("Email:");
+
         jMenu1.setText("Opções");
 
         menuItemSair.setText("Sair");
@@ -137,11 +142,9 @@ public class MainScreen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnSalvar)
-                    .addComponent(jScrollPane2)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -153,10 +156,11 @@ public class MainScreen extends javax.swing.JFrame {
                                     .addComponent(txtNum, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
                                     .addComponent(txtTel)
                                     .addComponent(txtNome)))
+                            .addComponent(btnSalvar)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblState)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtState, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(lblState, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(8, 8, 8)
+                                .addComponent(txtState, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -171,10 +175,15 @@ public class MainScreen extends javax.swing.JFrame {
                                     .addComponent(txtCPF)
                                     .addComponent(txtEnd, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblCity, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblCity, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblEmail))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(45, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtCity)
+                                    .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)))))
+                    .addComponent(jScrollPane2))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,10 +209,12 @@ public class MainScreen extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblState)
-                    .addComponent(txtState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
+                    .addComponent(txtState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblEmail)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
                 .addComponent(btnSalvar)
-                .addGap(56, 56, 56)
+                .addGap(49, 49, 49)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(455, Short.MAX_VALUE))
         );
@@ -233,12 +244,14 @@ public class MainScreen extends javax.swing.JFrame {
         String num = txtNum.getText();
         String cidade = txtCity.getText();
         String estado = txtState.getText();
+        String email = txtEmail.getText();
         
-        if (!isCamposValidos(nome, cpf, tel, end, num, cidade, estado)){
+        if (!isCamposValidos(nome, cpf, tel, end, num, cidade, estado, email)){
              JOptionPane.showMessageDialog(null, "Existem campos a serem preenchidos!", "ATENÇÃO", JOptionPane.ERROR_MESSAGE);
              return;
-        } JOptionPane.showMessageDialog(null, nome + ", cadastrado com sucesso!", "ATENÇÃO", JOptionPane.INFORMATION_MESSAGE);
-        
+        } 
+        JOptionPane.showMessageDialog(null, nome + ", cadastrado com sucesso!", "ATENÇÃO", JOptionPane.INFORMATION_MESSAGE);
+       
         
     }//GEN-LAST:event_btnSalvarActionPerformed
 
@@ -257,32 +270,6 @@ public class MainScreen extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-    
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvar;
@@ -291,6 +278,7 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCPF;
     private javax.swing.JLabel lblCity;
+    private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblEnd;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblNum;
@@ -300,6 +288,7 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JTable tableClientes;
     private javax.swing.JTextField txtCPF;
     private javax.swing.JTextField txtCity;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEnd;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNum;
