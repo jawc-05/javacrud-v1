@@ -1,9 +1,9 @@
 /**
  * @author jawc
  */
-package src.dao;
+package dao;
 
-import src.domain.Cliente;
+import domain.Cliente;
 
 public interface IClienteDAO {
 

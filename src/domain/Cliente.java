@@ -1,7 +1,7 @@
 /**
  * @author jawc
  */
-package src.domain;
+package domain;
 
 import java.util.Objects;
 
