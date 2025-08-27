@@ -387,6 +387,7 @@ public class MainScreen extends javax.swing.JFrame {
                 this.clienteDAO.alterar(cliente);
                 
                 modelo.setValueAt(cliente.getNome(), selectedRow, 0);
+                modelo.setValueAt(cliente.getTel(), selectedRow,1);
                 
                 
             }
