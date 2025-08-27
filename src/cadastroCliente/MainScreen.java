@@ -89,6 +89,11 @@ public class MainScreen extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tableClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableClientesMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tableClientes);
 
         lblTel.setText("Telefone:");
@@ -274,6 +279,18 @@ public class MainScreen extends javax.swing.JFrame {
     private void txtStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtStateActionPerformed
+
+    private void tableClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableClientesMouseClicked
+       int result = tableClientes.getSelectedRow();
+       Long cpf = (Long) tableClientes.getValueAt(result, 1);
+       
+       Cliente cliente = this.clienteDAO.consultar(cpf);
+       
+       txtNome.setText(cliente.getNome());
+       
+       
+       
+    }//GEN-LAST:event_tableClientesMouseClicked
 
     /**
      * @param args the command line arguments
