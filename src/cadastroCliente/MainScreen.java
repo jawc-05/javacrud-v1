@@ -293,7 +293,7 @@ public class MainScreen extends javax.swing.JFrame {
        txtNum.setText(cliente.getNum().toString());
        txtCity.setText(cliente.getCidade());
        txtState.setText(cliente.getEstado());
-       
+       txtEmail.setText(cliente.getEmail());
        
        
        
