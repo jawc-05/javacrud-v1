@@ -363,7 +363,7 @@ public class MainScreen extends javax.swing.JFrame {
         txtCPF.setEditable(false);
         
         if (selectedRow >= 0){
-            int result = JOptionPane.showConfirmDialog(this, "Deseja realemte atualizar este cliente?", "ATENÇÃO",
+            int result = JOptionPane.showConfirmDialog(this, "Deseja realmente atualizar este cliente?", "ATENÇÃO",
                     JOptionPane.YES_NO_OPTION,
                     JOptionPane.QUESTION_MESSAGE);
             
