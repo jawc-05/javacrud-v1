@@ -388,6 +388,7 @@ public class MainScreen extends javax.swing.JFrame {
                 
                 modelo.setValueAt(cliente.getNome(), selectedRow, 0);
                 modelo.setValueAt(cliente.getTel(), selectedRow,1);
+                modelo.setValueAt(cliente.getEnd(), selectedRow, 2);
                 
                 
             }
