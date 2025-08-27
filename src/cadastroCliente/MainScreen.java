@@ -363,7 +363,19 @@ public class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
-        // TODO add your handling code here:
+        int selectedRow = tableClientes.getSelectedRow();
+        
+        if (selectedRow >= 0){
+            int result = JOptionPane.showConfirmDialog(this, "Deseja realemte atualizar este cliente?", "ATENÇÃO",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE);
+            
+            if(result == JOptionPane.YES_OPTION){
+                
+                Long cpf = (Long) tableClientes.getValueAt(selectedRow, 1);
+                this.clienteDAO.alterar(cpf);
+            }
+        }
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     /**
