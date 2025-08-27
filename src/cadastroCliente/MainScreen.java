@@ -313,6 +313,7 @@ public class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_txtStateActionPerformed
 
     private void tableClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableClientesMouseClicked
+       txtCPF.setEditable(false);
        int result = tableClientes.getSelectedRow();
        Long cpf = (Long) tableClientes.getValueAt(result, 1);
        
