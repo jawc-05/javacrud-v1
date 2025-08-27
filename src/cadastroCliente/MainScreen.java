@@ -392,7 +392,7 @@ public class MainScreen extends javax.swing.JFrame {
                 modelo.setValueAt(cliente.getNum(), selectedRow, 3);
                 modelo.setValueAt(cliente.getCidade(), selectedRow,4);
                 modelo.setValueAt(cliente.getEstado(),selectedRow,5);
-                
+                modelo.setValueAt(cliente.getEmail(), selectedRow, 6);
                 
             }
         }
