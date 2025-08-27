@@ -312,8 +312,24 @@ public class MainScreen extends javax.swing.JFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         int selectedRow = tableClientes.getSelectedRow();
-        Long cpf = (Long) tableClientes.getValueAt(selectedRow, 1);
-        this.clienteDAO.excluir(cpf);
+        
+        if (selectedRow >= 0) {
+            int result = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir este cliente?", "CUIDADO",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE);
+            
+            if (result == JOptionPane.YES_OPTION){
+                
+                Long cpf = (Long) tableClientes.getValueAt(selectedRow, 1);
+                this.clienteDAO.excluir(cpf);
+                modelo.removeRow(selectedRow);
+                
+                JOptionPane.showMessageDialog(null, "Cliente excluido com sucesso!", "SUCESSO", JOptionPane.INFORMATION_MESSAGE);
+                limparCampos();
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Nenhum cliente selecionado", "ERRO",JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
