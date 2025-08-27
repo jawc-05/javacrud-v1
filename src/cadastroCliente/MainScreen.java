@@ -290,6 +290,7 @@ public class MainScreen extends javax.swing.JFrame {
        txtCPF.setText(cliente.getCpf().toString());
        txtTel.setText(cliente.getTel().toString());
        txtEnd.setText(cliente.getEnd());
+       txtNum.setText(cliente.getNum().toString());
        
        
        
