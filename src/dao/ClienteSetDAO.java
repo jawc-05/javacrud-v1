@@ -45,6 +45,7 @@ public abstract class ClienteSetDAO implements IClienteDAO{
                     clienteCadastrado.setEnd(cliente.getEnd());
                     clienteCadastrado.setCidade(cliente.getCidade());
                     clienteCadastrado.setEstado(cliente.getEstado());
+                    clienteCadastrado.setEmail(cliente.getEmail());
                     break;
                 }
             }
