@@ -291,6 +291,7 @@ public class MainScreen extends javax.swing.JFrame {
        txtTel.setText(cliente.getTel().toString());
        txtEnd.setText(cliente.getEnd());
        txtNum.setText(cliente.getNum().toString());
+       txtCity.setText(cliente.getCidade());
        
        
        
