@@ -325,6 +325,14 @@ public class MainScreen extends javax.swing.JFrame {
     }
 
     private void limparCampos() {
+        txtNome.setText("");
+        txtCPF.setText("");
+        txtTel.setText("");
+        txtEnd.setText("");
+        txtNum.setText("");
+        txtEmail.setText("");
+        txtCity.setText("");
+        txtState.setText("");
         
     }
 }
