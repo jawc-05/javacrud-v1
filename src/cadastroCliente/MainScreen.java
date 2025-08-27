@@ -360,6 +360,7 @@ public class MainScreen extends javax.swing.JFrame {
 
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
         int selectedRow = tableClientes.getSelectedRow();
+        txtCPF.setEditable(false);
         
         if (selectedRow >= 0){
             int result = JOptionPane.showConfirmDialog(this, "Deseja realemte atualizar este cliente?", "ATENÇÃO",
@@ -368,7 +369,25 @@ public class MainScreen extends javax.swing.JFrame {
             
             if(result == JOptionPane.YES_OPTION){
                 
+                String nome = txtNome.getText();
+                String cpf = txtCPF.getText();
+                String tel = txtTel.getText();
+                String end = txtEnd.getText();
+                String num = txtNum.getText();
+                String cidade = txtCity.getText();
+                String estado = txtState.getText();
+                String email = txtEmail.getText();
+                
+                if(!isCamposValidos(nome,cpf,tel,end,num,cidade,estado,email)){
+                    JOptionPane.showMessageDialog(null, "Existem campos a serem preenchidos!", "ATENÇÃO", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                
+                Cliente cliente = Cliente(nome,cpf,tel,end,num,cidade,estado,email);
                 this.clienteDAO.alterar(cliente);
+                
+                modelo.setValueAt(cliente.getNome(), selectedRow, 0);
+                
                 
             }
         }
