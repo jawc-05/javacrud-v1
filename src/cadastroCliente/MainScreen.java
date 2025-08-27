@@ -383,16 +383,14 @@ public class MainScreen extends javax.swing.JFrame {
                     return;
                 }
                 
-                Cliente cliente = Cliente(nome,cpf,tel,end,num,cidade,estado,email);
+                Cliente cliente = new Cliente(nome,cpf,tel,end,num,cidade,estado,email);
                 this.clienteDAO.alterar(cliente);
                 
                 modelo.setValueAt(cliente.getNome(), selectedRow, 0);
-                modelo.setValueAt(cliente.getTel(), selectedRow,1);
-                modelo.setValueAt(cliente.getEnd(), selectedRow, 2);
-                modelo.setValueAt(cliente.getNum(), selectedRow, 3);
-                modelo.setValueAt(cliente.getCidade(), selectedRow,4);
-                modelo.setValueAt(cliente.getEstado(),selectedRow,5);
-                modelo.setValueAt(cliente.getEmail(), selectedRow, 6);
+                modelo.setValueAt(cliente.getCpf(), selectedRow,1);
+                modelo.setValueAt(cliente.getTel(), selectedRow, 2);
+                modelo.setValueAt(cliente.getEnd(), selectedRow, 3);
+                modelo.setValueAt(cliente.getEmail(), selectedRow, 4);
                 
             }
         }
