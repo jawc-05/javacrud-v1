@@ -287,6 +287,7 @@ public class MainScreen extends javax.swing.JFrame {
        Cliente cliente = this.clienteDAO.consultar(cpf);
        
        txtNome.setText(cliente.getNome());
+       txtCPF.setText(cliente.getCpf().toString());
        
        
        
